@@ -48,16 +48,19 @@ class SelfIntroduction
     }
 }
 
-if (isset($_POST)) {
+if (!empty($_POST)) {
     $SelfIntroduction = new SelfIntroduction(
         $lastName = $_POST['last_name'], $firstName = $_POST['first_name'], $age = $_POST['age'], $hobby = $_POST['hobby']
     );
 
-    if ($SelfIntroduction) {
+    if ($SelfIntroduction !== null) {
         echo '私の名前は'.$SelfIntroduction->getFullName().'、年齢は'.$SelfIntroduction->getAge().'歳です。';
         echo '<br>';
         echo '趣味は'. $SelfIntroduction->getHobby().'です！';
     }
+    // else {
+    //     echo '正しく入力してください！';
+    // }
 }
 
 ?>

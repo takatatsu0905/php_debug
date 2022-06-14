@@ -115,19 +115,21 @@ class Battle
         if ($this->first === 'パー' && $this->second === 'チョキ') {
             return '負け';
         }
+        
     }
 
     public function countVictories()
     {
         if ($this->judge() === '勝ち') {
-            $this->$_SESSION['result'] = 1;
+            $_SESSION['result'] += 1;
         }
-    }
-
-    public function getVitories()
-    {
         return $_SESSION['result'];
     }
+
+    // public function getVitories()
+    // {
+    //     return $_SESSION['result'];
+    // }
 
     public function showResult()
     {
@@ -149,7 +151,7 @@ if (! empty($_POST)) {
     echo '勝敗は'.$battle->showResult().'です。';
     if ($battle->showResult() === '勝ち') {
         echo '<br>';
-        echo $battle->getVitories().'回目の勝利です。';
+        echo $battle->countVictories().'回目の勝利です。';
     }
 }
 
